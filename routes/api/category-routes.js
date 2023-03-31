@@ -21,7 +21,9 @@ router.get("/:id", async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
   try {
-    const categoryData = await Category.findByPk(req.params.id, {include: [{ model: Product }],});
+    const categoryData = await Category.findByPk(req.params.id, {
+      include: [{ model: Product }],
+    });
     res.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
@@ -48,7 +50,7 @@ router.put("/:id", async (req, res) => {
     });
     res.status(200).json(categoryData);
   } catch (error) {
-    res.status(500).json(err);
+    res.status(500).json(error);
   }
 });
 
@@ -62,7 +64,7 @@ router.delete("/:id", async (req, res) => {
     });
     res.status(200).json(categoryData);
   } catch (error) {
-    res.status(500).json(err);
+    res.status(500).json(error);
   }
 });
 
